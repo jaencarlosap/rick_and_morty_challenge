@@ -23,14 +23,14 @@ const pagination = (fetchMore, page = 1) => {
     })
 }
 
-const Numbers = (info, fetchMore) => {
+const Numbers = ({ info, fetchMore }) => {
     let pag = [];
     if (info.next !== null && info.next <= info.pages) {
         for (let index = info.next - 1; pag.length < 5 && info.next - 1 < info.pages; index++) {
             (index <= info.pages && index !== 0) ? pag.push(index) : pag.push("-")
         }
     }
-    if (info.next === null && info.prev !==null) {
+    if (info.next === null && info.prev !== null) {
         for (let index = info.prev - 4; pag.length < 5; index++) {
             (index <= info.pages && index !== 0) ? pag.push(index) : pag.push("-")
         }
@@ -51,7 +51,7 @@ const Pagination = (props) => {
                     <div className="pag-btn" onClick={() => pagination(props.fetchMore, info.prev)} ><MdFirstPage /> </div>
                 </>
                 : "")}
-            {Numbers(info, props.fetchMore)}
+            <Numbers info={info} fetchMore={props.fetchMore} />
             {(info.next !== null ?
                 <>
                     <div className="pag-btn" onClick={() => pagination(props.fetchMore, info.next)}><MdLastPage /></div>

@@ -10,7 +10,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import Layout from './components/Layout';
 import pages from './pages';
 
-function capturePages() {
+function CapturePages() {
   return (
     <Switch>
       {pages.map((page, index) => {
@@ -24,12 +24,12 @@ const client = new ApolloClient({
   uri: 'https://rickandmortyapi.com/graphql',
 });
 
-function App(props) {
+function App() {
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>
         <Layout >
-          {capturePages()}
+          <CapturePages />
         </Layout>
       </BrowserRouter>
     </ApolloProvider>
