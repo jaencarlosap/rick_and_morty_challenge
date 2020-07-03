@@ -1,0 +1,10 @@
+.buscador {
+    width: 130px;
+    border-radius: 20px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.buscador:focus {
+    width: 30%;
+}

@@ -1,0 +1,28 @@
+@import './grid.css';
+@import './card.css';
+@import './btn.css';
+@import './modal.css';
+@import './pagination.css';
+@import './filter.css';
+
+
+body {
+  background-color: #282c34;
+  color: #ffffff;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  min-height: 100vh;
+}
+
+.content {
+  margin: 1% 5% 1% 5%;
+}
+
+input:focus,
+input.form-control:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
