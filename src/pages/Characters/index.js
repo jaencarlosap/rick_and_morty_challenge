@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 
 import Pagination from '../../components/Pagination';
 import Modal from '../../components/Modal';
+import Filter from '../../components/Filter';
 
 const query = gql`
     query getList($page: Int,$filtro: FilterCharacter ) {
@@ -35,7 +36,8 @@ const Characters = () => {
         row: {}
     })
     const { loading, error, data, fetchMore } = useQuery(query, {
-        variables: { page: 1 }
+        variables: { page: 1 },
+        errorPolicy: "ignore"
     });
 
     const setModal = (row) => setState({ modal: !state.modal, row });
@@ -44,6 +46,9 @@ const Characters = () => {
     if (error) console.log(error, "error get info")
     return (
         <div className="content">
+            <div className="row ">
+                <Filter fetchMore={fetchMore} name={"characters"} data={data} />
+            </div>
             <div className="row">
                 {data.characters === undefined ? "" :
                     data.characters.results.map((row, index) => (

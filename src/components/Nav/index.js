@@ -4,7 +4,6 @@ import { MdFormatAlignCenter } from "react-icons/md";
 
 import '../../assets/css/nav.css';
 import pages from '../../pages';
-import Filter from '../Filter';
 
 const Index = ({ props }) => {
     let location = useLocation();
@@ -27,7 +26,6 @@ const Index = ({ props }) => {
             <Link to={location.pathname} className="icon" onClick={responsenav}>
                 <MdFormatAlignCenter />
             </Link>
-            <Filter />
         </div>
     )
 }

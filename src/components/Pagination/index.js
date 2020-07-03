@@ -30,7 +30,7 @@ const Numbers = (info, fetchMore) => {
             (index <= info.pages && index !== 0) ? pag.push(index) : pag.push("-")
         }
     }
-    if (info.next === null) {
+    if (info.next === null && info.prev !==null) {
         for (let index = info.prev - 4; pag.length < 5; index++) {
             (index <= info.pages && index !== 0) ? pag.push(index) : pag.push("-")
         }
