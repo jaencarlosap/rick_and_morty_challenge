@@ -23,13 +23,6 @@
     color: #fff;
     font-weight: 700;
     letter-spacing: .03em;
-    /* display: none; */
-}
-
-.pag-btn:first-child,
-.pag-btn:last-child {
-    /* padding: 0 16px; */
-    /* margin: 0 12px 6px; */
 }
 
 .pag-btn:last-child,

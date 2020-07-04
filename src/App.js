@@ -14,7 +14,7 @@ function CapturePages() {
   return (
     <Switch>
       {pages.map((page, index) => {
-        return <Route key={"route_" + index} exact path={page.path} component={page.component} />
+        return <Route exact key={"route_" + index} exact path={page.path} component={page.component} />
       })}
     </Switch>
   )
