@@ -5,15 +5,15 @@ import { MdFormatAlignCenter } from "react-icons/md";
 import '../../assets/css/nav.css';
 import pages from '../../pages';
 
-const Index = ({ props }) => {
+const Index = () => {
     let location = useLocation();
 
     function responsenav(params) {
-        let x = document.getElementsByClassName("nav")[0];
-        if (x.className === "nav") {
-            x.className += " responsive";
+        let nav = document.getElementsByClassName("nav")[0];
+        if (nav.className === "nav") {
+            nav.className += " responsive";
         } else {
-            x.className = "nav";
+            nav.className = "nav";
         }
     }
 

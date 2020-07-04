@@ -8,7 +8,7 @@ const Filter = (props) => {
         document.getElementsByClassName("search-box__input")[0].focus();
     }
     const validaActive = (e) => (e.target.value === "") ? document.getElementsByClassName("search-box")[0].classList.remove("active-sb") : "";
-    const FecthExcute = (e, fetchMore) => {
+    const FecthExecute = (e, fetchMore) => {
         fetchMore({
             variables: { filtro: { name: e.target.value } },
             updateQuery: (previousResult, { fetchMoreResult }) => {
@@ -36,7 +36,7 @@ const Filter = (props) => {
                 placeholder="Nombre"
                 onBlur={(e) => {
                     validaActive(e);
-                    FecthExcute(e, props.fetchMore)
+                    FecthExecute(e, props.fetchMore)
                 }}
             />
             <MdSearch className="search-box__icon" onClick={() => activateSearch()} />
