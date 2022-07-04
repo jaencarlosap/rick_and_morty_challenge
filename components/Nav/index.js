@@ -1,33 +1,38 @@
+import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { MdFormatAlignCenter } from "react-icons/md";
-import '../../assets/css/nav.module.css';
 
 export const Nav = () => {
+	const route = useRouter()
+	const [showResponsive, setShowResponsive] = useState(false)
+	const classMobile = showResponsive ? 'responsive' : ''
 
-	const responseNav = () => {
-		let nav = document.getElementsByClassName("nav")[0];
-		if (nav.className === "nav") {
-			nav.className += " responsive";
-		} else {
-			nav.className = "nav";
-		}
+	const handleChangeView = (event) => {
+		event.preventDefault()
+		setShowResponsive(!showResponsive)
 	}
 
 	return (
-		<div className="nav" >
-			<Link href="/"> Rick y Morty</Link>
-			{/* {pages.map((page, index) => {
-				return <Link key={"link_" + index} to={page.path} className={location.pathname === page.path ? "active" : ""}>{page.label}</Link>
-			})} */}
+		<div className={`nav ${classMobile}`} >
+			<Link href="/">
+				<a href="" className={route.pathname == '/' ? 'active' : ''}>
+					Rick y Morty
+				</a>
+			</Link>
 			<Link href="/characters">
-				Personajes
+				<a href="" className={route.pathname == '/characters' ? 'active' : ''}>
+					Personajes
+				</a>
 			</Link>
 			<Link href="/locations">
-				Dimensiones
+				<a href="" className={route.pathname == '/locations' ? 'active' : ''}>
+					Dimensiones
+				</a>
 			</Link>
-			<Link href="/" className="icon">
+			<a href="" className='icon' onClick={handleChangeView}>
 				<MdFormatAlignCenter />
-			</Link>
+			</a>
 		</div >
 	)
 }

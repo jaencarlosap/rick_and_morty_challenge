@@ -6,6 +6,7 @@ import {
 } from '@apollo/client'
 import { Layout } from '../components'
 import '../assets/css/App.css'
+import '../assets/css/nav.css'
 
 const client = new ApolloClient({
 	uri: 'https://rickandmortyapi.com/graphql',

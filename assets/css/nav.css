@@ -20,7 +20,8 @@
 	color: white;
 }
 
-.nav .icon {
+.icon {
+	padding: 0;
 	display: none;
 }
 
@@ -33,9 +34,7 @@
 		float: right;
 		display: block;
 	}
-}
 
-@media screen and (max-width: 600px) {
 	.nav.responsive {
 		position: relative;
 	}
@@ -50,5 +49,9 @@
 		float: none;
 		display: block;
 		text-align: left;
+	}
+
+	.nav.responsive .icon {
+		padding: inherit;
 	}
 }
