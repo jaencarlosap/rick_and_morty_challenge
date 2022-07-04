@@ -1,0 +1,49 @@
+{
+	"root": true,
+	"extends": [
+		"plugin:@next/next/recommended",
+		"eslint:recommended",
+		"next"
+	],
+	"rules": {
+		"no-console": 2,
+		"quotes": [
+			2,
+			"single",
+			{
+				"avoidEscape": true,
+				"allowTemplateLiterals": true
+			}
+		],
+		"comma-dangle": [
+			"error",
+			{
+				"arrays": "never",
+				"objects": "never",
+				"imports": "never",
+				"exports": "never",
+				"functions": "never"
+			}
+		],
+		"no-multi-spaces": [
+			"error",
+			{
+				"exceptions": {
+					"BinaryExpression": true
+				}
+			}
+		],
+		"no-multiple-empty-lines": [
+			"error",
+			{
+				"max": 1,
+				"maxBOF": 1
+			}
+		],
+		"semi": [
+			"error",
+			"never"
+		],
+		"dot-notation": "error"
+	}
+}
