@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Image from 'next/image'
 import { Pagination, Modal } from '../../components'
 import { useLocations } from '../../hooks'
 
@@ -7,19 +8,18 @@ const Locations = () => {
 		modal: false,
 		row: {}
 	})
-	const { loading, error, data, fetchMore } = useLocations()
+	const { loading, data, fetchMore } = useLocations()
 
 	const setModal = (row) => setState({ modal: !state.modal, row })
 
-	if (loading) return <p> Loading... </p>;
-	if (error) console.log(error, "error get info")
+	if (loading) return <p> Loading... </p>
 
 	return (
 		<div className="content">
 			<div className="row">
-				{data.locations === undefined ? "" :
+				{data.locations === undefined ? '' :
 					data.locations.results.map((row, index) => (
-						<div key={"card_episodes_" + index} className="col-1">
+						<div key={'card_episodes_' + index} className="col-1">
 							<div className="card" >
 								<div className="card-content">
 									<p> {row.name} </p>
@@ -32,8 +32,8 @@ const Locations = () => {
 					))
 				}
 			</div>
-			<Pagination fetchMore={fetchMore} name={"locations"} data={data} />
-			{state.row !== undefined && state.row.name !== "" ?
+			<Pagination fetchMore={fetchMore} name={'locations'} data={data} />
+			{state.row !== undefined && state.row.name !== '' ?
 				<Modal show={state.modal} closeModal={setModal} title={state.row.name}>
 					<div className="row">
 						<div className="col-3">
@@ -46,16 +46,24 @@ const Locations = () => {
 									<p><b>Ubicacion : </b>{state.row.location.name}</p>
 									<p><b>Dimension : </b>{state.row.location.dimension}</p>
 								</>
-								: ""}
+								: ''}
 						</div>
 						<div className="col-3">
-							<img src={state.row.image} alt={state.row.name} />
+							{state?.row?.image && (
+								<Image
+									src={state?.row?.image}
+									alt={state?.row?.name}
+									layout='responsive'
+									width='100'
+									height='100'
+								/>
+							)}
 						</div>
 					</div>
 				</Modal>
-				: ""}
+				: ''}
 		</div >
 	)
 }
 
-export default Locations;
+export default Locations
