@@ -1,7 +1,7 @@
-import { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { MdFormatAlignCenter } from "react-icons/md";
+import { useState } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { MdFormatAlignCenter } from 'react-icons/md'
 
 export const Nav = () => {
 	const route = useRouter()

@@ -5,14 +5,14 @@ import {
 	MdSkipPrevious
 } from 'react-icons/md'
 
-var name = ""
+var name = ''
 
 const pagination = (fetchMore, page = 1) => {
 	fetchMore({
 		variables: { page: page },
 		updateQuery: (previousResult, { fetchMoreResult }) => {
-			const results = fetchMoreResult[name].results;
-			const info = fetchMoreResult[name].info;
+			const results = fetchMoreResult[name].results
+			const info = fetchMoreResult[name].info
 
 			return results.length
 				? {
@@ -22,31 +22,31 @@ const pagination = (fetchMore, page = 1) => {
 						info
 					}
 				}
-				: previousResult;
+				: previousResult
 		}
 	})
 }
 
 const Numbers = ({ info, fetchMore }) => {
-	let pag = [];
+	let pag = []
 	if (info.next !== null && info.next <= info.pages) {
 		for (let index = info.next - 1; pag.length < 5 && info.next - 1 < info.pages; index++) {
-			(index <= info.pages && index !== 0) ? pag.push(index) : pag.push("-")
+			(index <= info.pages && index !== 0) ? pag.push(index) : pag.push('-')
 		}
 	}
 	if (info.next === null && info.prev !== null) {
 		for (let index = info.prev - 4; pag.length < 5; index++) {
-			(index <= info.pages && index !== 0) ? pag.push(index) : pag.push("-")
+			(index <= info.pages && index !== 0) ? pag.push(index) : pag.push('-')
 		}
 	}
 	return pag.map(e => {
-		if (e !== "-") return <div key={"pag_num_" + e} className={info.next - 1 === e ? "pag-btn active " : "pag-btn"} onClick={() => pagination(fetchMore, e)}>{e}</div>
+		if (e !== '-') return <div key={'pag_num_' + e} className={info.next - 1 === e ? 'pag-btn active ' : 'pag-btn'} onClick={() => pagination(fetchMore, e)}>{e}</div>
 	})
 }
 
 export const Pagination = (props) => {
-	const info = props.data[props.name].info;
-	name = props.name;
+	const info = props.data[props.name].info
+	name = props.name
 	return (
 		<div className="pagination">
 			{(info.prev !== null ?
@@ -54,14 +54,14 @@ export const Pagination = (props) => {
 					<div className="pag-btn" onClick={() => pagination(props.fetchMore, 1)} ><MdSkipPrevious /> </div>
 					<div className="pag-btn" onClick={() => pagination(props.fetchMore, info.prev)} ><MdFirstPage /> </div>
 				</>
-				: "")}
+				: '')}
 			<Numbers info={info} fetchMore={props.fetchMore} />
 			{(info.next !== null ?
 				<>
 					<div className="pag-btn" onClick={() => pagination(props.fetchMore, info.next)}><MdLastPage /></div>
 					<div className="pag-btn" onClick={() => pagination(props.fetchMore, info.pages)}><MdSkipNext /> </div>
 				</>
-				: "")}
+				: '')}
 		</div>
 	)
 }

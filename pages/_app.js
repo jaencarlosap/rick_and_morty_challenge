@@ -10,8 +10,8 @@ import '../assets/css/nav.css'
 
 const client = new ApolloClient({
 	uri: 'https://rickandmortyapi.com/graphql',
-	cache: new InMemoryCache(),
-});
+	cache: new InMemoryCache()
+})
 
 const MyApp = ({ Component, pageProps }) => {
 	return (

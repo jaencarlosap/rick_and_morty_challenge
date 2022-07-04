@@ -1,4 +1,4 @@
-export const Modal = ({ children, title = "", show = false, closeModal }) => {
+export const Modal = ({ children, title = '', show = false, closeModal }) => {
 	return (
 		<div className={show === true ? ' modal modal-open' : 'modal'}>
 			<div className="modal-content">

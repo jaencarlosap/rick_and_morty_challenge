@@ -1,21 +1,21 @@
 import { MdSearch } from 'react-icons/md'
 
-var name = "";
+var name = ''
 
 export const Filter = (props) => {
-	name = props.name;
+	name = props.name
 	const activateSearch = () => {
-		document.getElementsByClassName("search-box")[0].classList.toggle("active-sb");
-		document.getElementsByClassName("search-box__input")[0].focus();
+		document.getElementsByClassName('search-box')[0].classList.toggle('active-sb')
+		document.getElementsByClassName('search-box__input')[0].focus()
 	}
-	const validaActive = (e) => (e.target.value === "") ? document.getElementsByClassName("search-box")[0].classList.remove("active-sb") : "";
+	const validaActive = (e) => (e.target.value === '') ? document.getElementsByClassName('search-box')[0].classList.remove('active-sb') : ''
 	const FecthExecute = (e, fetchMore) => {
 		fetchMore({
 			variables: { filtro: { name: e.target.value } },
 			updateQuery: (previousResult, { fetchMoreResult }) => {
 				if (fetchMoreResult[name] === undefined || fetchMoreResult[name] === null) return previousResult
-				const results = fetchMoreResult[name].results;
-				const info = fetchMoreResult[name].info;
+				const results = fetchMoreResult[name].results
+				const info = fetchMoreResult[name].info
 
 				return results.length
 					? {
@@ -25,7 +25,7 @@ export const Filter = (props) => {
 							info
 						}
 					}
-					: previousResult;
+					: previousResult
 			}
 		}).catch()
 	}
@@ -36,7 +36,7 @@ export const Filter = (props) => {
 				className="search-box__input"
 				placeholder="Nombre"
 				onBlur={(e) => {
-					validaActive(e);
+					validaActive(e)
 					FecthExecute(e, props.fetchMore)
 				}}
 			/>
